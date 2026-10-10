@@ -1,0 +1,8 @@
+import {createContext,useContext,useState} from 'react'; import api from '../services/api';
+const C=createContext();
+export function AuthProvider({children}){const [user,setUser]=useState(()=>{try{return JSON.parse(localStorage.getItem('nexus_user'))||null}catch{return null}}); const [activeDomain,setActiveDomainState]=useState(()=>{const saved=localStorage.getItem('nexus_active_domain');if(saved)return saved;try{const current=JSON.parse(localStorage.getItem('nexus_user'));return current?.domains?.[0]||current?.domain||'ALL'}catch{return 'ALL'}}); const setActiveDomain=(domain)=>{localStorage.setItem('nexus_active_domain',domain);setActiveDomainState(domain)};
+ const login=async(email,password)=>{const r=await api.post('/auth/login',{email,password});localStorage.setItem('nexus_token',r.data.token);localStorage.setItem('nexus_user',JSON.stringify(r.data));setUser(r.data);setActiveDomain(r.data.domain||'ALL');return r.data};
+ const register=async(data)=>{const r=await api.post('/auth/register',data);localStorage.setItem('nexus_token',r.data.token);localStorage.setItem('nexus_user',JSON.stringify(r.data));setUser(r.data);setActiveDomain(r.data.domain||'ALL');return r.data};
+ const updateDomains=async(domains)=>{const r=await api.put('/profile/domains',{domains});const updated={...user,domains:r.data.domains};localStorage.setItem('nexus_user',JSON.stringify(updated));setUser(updated);return updated};
+ const logout=()=>{localStorage.removeItem('nexus_token');localStorage.removeItem('nexus_user');setUser(null)}; return <C.Provider value={{user,login,register,updateDomains,logout,activeDomain,setActiveDomain}}>{children}</C.Provider>}
+export const useAuth=()=>useContext(C);

@@ -1,0 +1,11 @@
+NEXUS – A Unified Multi-Domain Digital Platform
+Student ID: 24EG107D60
+
+Abstract
+NEXUS is a full-stack web platform designed to bring people from different professional and social fields onto a single digital ecosystem. Instead of developing separate websites for different domains, NEXUS provides one common platform where users can select their field and access relevant information, resources, opportunities, services, and communities.
+
+The platform supports fields such as Education, Agriculture, Healthcare, Business, Technology, Government and Community Services. Students can find learning resources, internships, scholarships and projects; faculty can share knowledge and opportunities; farmers can access agricultural resources and connect with relevant experts; businesses can publish jobs and services; and other users can discover information and opportunities related to their respective fields.
+
+The system uses Java Spring Boot for the backend, React.js for the frontend, and MySQL for database management. Role-based authentication, REST APIs, CRUD operations, secure password hashing, JWT authentication, search, notifications-ready architecture, and personalized dashboards provide an efficient and scalable platform. An AI Assistant with resource retrieval demonstrates LLM and RAG integration.
+
+The main objective of NEXUS is to create a single digital platform that connects multiple domains and reduces the need for users to depend on different websites for information, opportunities and collaboration.
