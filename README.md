@@ -15,4 +15,4 @@ Create a local `.env` file from `.env.example` if the API is not running at `htt
 
 ## Production deployment
 
-Deploy this repository as a Vercel Vite project with `npm run build` and output directory `dist`. Set `VITE_API_URL` in the Vercel project environment to the backend API URL ending in `/api`, for example `https://YOUR-BACKEND-DOMAIN/api`. Configure the backend's `CORS_ALLOWED_ORIGINS` to the exact deployed frontend origin.
+Deploy this repository as a Netlify Vite site with build command `npm run build` and publish directory `dist`. The production build reads `VITE_API_URL` from `.env.production`; update it if the Render service URL changes. Configure the backend's `CORS_ALLOWED_ORIGINS` to the exact deployed frontend origin (`https://nexus-24eg107d60.netlify.app`).
